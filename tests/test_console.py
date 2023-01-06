@@ -23,7 +23,7 @@ class TestStateCreation(unittest.TestCase):
         cursor.execute("SELECT COUNT(*) FROM states")
         initial_count = cursor.fetchone()[0]
 
-        # Execute the create state command (assuming it's a function or method in your code)
+        # Execute the create state command (assuming it's a function
         create_state("California")
 
         # Get the final number of rows in the table
