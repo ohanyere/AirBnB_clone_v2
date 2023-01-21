@@ -1,21 +1,20 @@
 #!/usr/bin/python3
-'''
-    create a tar.zip file
-    from web_static
-'''
-import os.path
+#creates a folder version and tarzip file
+
+import os
+from fabric.api import local, task
 from datetime import datetime
-from fabric.api import local
 
 
+@task
 def do_pack():
-    '''creates .tgz file'''
+    if not os.path.exists("versions"):
+        os.mkdir("versions")
 
-    date = datetime.now().strftime('%Y%m%d%H%M%S')
-    name = f"web_static_{date}.tgz"
-    if os.path.isdir("versions") is False:
-        if local("mkdir -p versions").failed is True:
-            return None
-    if local(f"tar -zcvf versions/{name} web_static").Failed is True:
-        return None
-    return name
+    archive_name = "web_static_{}.tgz".format(datetime.now().strftime("%Y%m%d%H%M%S"))
+
+    local("tar -cvzf versions/{} web_static".format(archive_name))
+
+    if os.path.exists("versions/{}".format(archive_name)):
+        return "versions/{}".format(archive_name)
+    return None
