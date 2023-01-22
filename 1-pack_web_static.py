@@ -1,20 +1,25 @@
 #!/usr/bin/python3
-#creates a folder version and tarzip file
+'''
+    contains the do_pack method
+'''
 
-import os
-from fabric.api import local, task
 from datetime import datetime
+from fabric.api import local
+import os
 
 
-@task
 def do_pack():
+    '''creates a tar.zip file'''
+
     if not os.path.exists("versions"):
-        os.mkdir("versions")
+        os.makedirs("versions")
 
-    archive_name = "web_static_{}.tgz".format(datetime.now().strftime("%Y%m%d%H%M%S"))
+    date_format = "%Y%m%d%H%M%S"
+    timestamp = datetime.now().strftime(date_format)
+    filename = "web_static_{}.tgz".format(timestamp)
+    archive_path = "versions/{}".format(filename)
 
-    local("tar -cvzf versions/{} web_static".format(archive_name))
-
-    if os.path.exists("versions/{}".format(archive_name)):
-        return "versions/{}".format(archive_name)
+    local("tar -cvzf {} web_static".format(archive_path))
+    if os.path.exists(archive_path):
+        return archive_path
     return None
