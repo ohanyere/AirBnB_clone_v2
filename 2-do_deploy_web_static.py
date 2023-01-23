@@ -3,7 +3,7 @@
     contains the module for setting up remote module
 '''
 
-from fabric.api import put, run
+from fabric.api import *
 import os
 
 env.hosts = ['ubuntu@54.165.158.100', 'ubuntu@54.209.231.85']
