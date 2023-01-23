@@ -6,7 +6,7 @@
 from fabric.api import *
 import os
 
-env.hosts = ['ubuntu@54.165.158.100', 'ubuntu@54.209.231.85']
+env.hosts = ['54.165.158.100', '54.209.231.85']
 
 
 def do_deploy():
