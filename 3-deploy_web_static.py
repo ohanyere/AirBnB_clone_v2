@@ -4,10 +4,9 @@
 '''
 
 from datetime import datetime
-from fabric.api import local
+from fabric.api import *
 import os
 
-env.user = "ubuntu"
 env.key_filename = "~/.ssh/school"
 env.hosts = ['54.165.158.100', '54.209.231.85']
 
