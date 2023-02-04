@@ -26,8 +26,11 @@ def user_text(text):
 
 
 @app.route("/python/(<text>)", strict_slashes=False)
-def pyth(text="is cool"):
-    return 'Python {}'. format(text.replace('_', ' '))
+def pyth(text):
+    if is (text):
+        return 'Python {}'. format(text.replace('_', ' '))
+    else:
+        return 'Python is cool'
 
 
 if __name__ == "__main__":
