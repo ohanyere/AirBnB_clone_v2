@@ -11,11 +11,17 @@ app = Flask(__name__)
 
 @app.route("/states_list", strict_slashes=False)
 def states_list():
+    '''returns a template of unordered lists of state 
+        objects
+    '''
     return render_template("7-states_list.html", states=storage.all('State'))
 
 
 @app.teardown_appcontext
 def remove_session(self):
+    '''
+        tears down the session
+    '''
     storage.close()
 
 
