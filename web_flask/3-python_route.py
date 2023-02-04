@@ -22,11 +22,13 @@ def hbnb():
 
 @app.route("/c/<text>", strict_slashes=False)
 def user_text(text):
+    '''displays c with a text'''
     return 'C {}'. format(text.replace('_', ' '))
 
 
-@app.route("/python/(<text>)", strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
 def pyth_txt(text="is cool"):
+    '''displays python with a text'''
     return 'Python {}'. format(text.replace('_', ' '))
 
 
