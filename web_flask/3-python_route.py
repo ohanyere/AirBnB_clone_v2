@@ -25,12 +25,9 @@ def user_text(text):
     return 'C {}'. format(text.replace('_', ' '))
 
 
-@app.route("/python/(<text>)", strict_slashes=False)
-def pyth(text):
-    if is (text):
-        return 'Python {}'. format(text.replace('_', ' '))
-    else:
-        return 'Python is cool'
+@app.route("/python/<text>", strict_slashes=False)
+def pyth_txt(text="is cool"):
+    return 'Python {}'. format(text.replace('_', ' '))
 
 
 if __name__ == "__main__":
