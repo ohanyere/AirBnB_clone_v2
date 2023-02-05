@@ -8,6 +8,13 @@ from models import storage
 
 app = Flask(__name__)
 
+@app.teardown_appcontext
+def remove_session(self):
+    '''
+        tears down the session
+    '''
+    storage.close()
+
 
 @app.route("/states_list", strict_slashes=False)
 def states_list():
@@ -15,14 +22,6 @@ def states_list():
         objects
     '''
     return render_template("7-states_list.html", states=storage.all('State'))
-
-
-@app.teardown_appcontext
-def remove_session(self):
-    '''
-        tears down the session
-    '''
-    storage.close()
 
 
 if __name__ == "__main__":
